@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LiON</title>
+  <meta name="description" content="LiON - تيشرتات رجالي صُنعت في مصر">
+  <link rel="icon" href="logo.png">
+
+  <!-- الخطوط -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Lalezar&display=swap" rel="stylesheet">
+
+  <!-- التصميم -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- الشريط العلوي الصغير -->
+  <div class="announce" id="announce"></div>
+
+  <!-- الهيدر: اللوجو + البحث + الأيقونات + المنيو -->
+  <header class="top">
+    <div class="wrap bar">
+      <a class="logo" href="index.html" aria-label="الصفحة الرئيسية">
+        <img data-logo src="logo.png" alt="LiON">
+      </a>
+
+      <form class="search" id="searchForm" role="search">
+        <input id="q" type="search" placeholder="دوّر على تيشرت" aria-label="بحث">
+        <button type="submit" aria-label="بحث">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        </button>
+      </form>
+
+      <div class="actions">
+        <!-- بيظهر بس لما تفتح الموقع بالشكل: index.html?admin -->
+        <button class="ibtn" id="adminBtn" data-act="adminOpen" aria-label="لوحة التحكم" hidden>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h8M18 7h2M4 17h2M12 17h8"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></svg>
+        </button>
+        <button class="ibtn" data-act="nav" data-cat="wish" aria-label="المفضلة">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+          <span class="n" id="wishCount"></span>
+        </button>
+        <button class="ibtn" data-act="cartOpen" aria-label="السلة">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="n" id="cartCount"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav-line">
+      <div class="wrap"><nav class="nav" id="nav" aria-label="الأقسام"></nav></div>
+    </div>
+  </header>
+
+  <!-- الصفحة الرئيسية -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">تشكيلة جديدة</p>
+        <h1 data-text="heroTitle"></h1>
+        <p class="sub" data-text="heroSub"></p>
+        <button class="cta" data-act="shop">
+          تسوّق دلوقتي
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        </button>
+      </div>
+      <div class="mark"><img data-logo src="logo.png" alt="LiON Made in Egypt"></div>
+    </div>
+  </section>
+
+  <!-- المنتجات -->
+  <main class="wrap shop" id="shop">
+    <div class="shop-head">
+      <h2 id="shopTitle">تيشرتات رجالي</h2>
+      <div class="shop-tools">
+        <span class="count" id="count"></span>
+        <select class="sel" id="sort" aria-label="الترتيب">
+          <option value="new">الأحدث</option>
+          <option value="low">السعر: الأقل</option>
+          <option value="high">السعر: الأعلى</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <!-- الفوتر -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="fl"><img data-logo src="logo.png" alt="LiON"></div>
+      <nav class="social" id="social" aria-label="تابعنا"></nav>
+      <small id="copy"></small>
+    </div>
+  </footer>
+
+  <!-- زرار الواتساب (تحت على الشمال) -->
+  <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="كلّمنا على واتساب">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- الطبقات: السلة، تفاصيل المنتج، لوحة التحكم -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="cart" role="dialog" aria-modal="true" aria-label="السلة" hidden></aside>
+  <div class="modal" id="modal" hidden></div>
+
+  <div class="sheet" id="admin" role="dialog" aria-modal="true" aria-label="لوحة التحكم" hidden>
+    <div class="sheet-top">
+      <div class="wrap">
+        <h2>لوحة التحكم</h2>
+        <button class="ibtn" data-act="adminClose" aria-label="إغلاق">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="sheet-in">
+      <div id="sampleBox"></div>
+
+      <section class="panel how">
+        <h3>إزاي تنشر التعديلات</h3>
+        <p class="note" id="howText">أي تعديل بتعمله هنا بيتحفظ على جهازك بس. عشان الزباين يشوفوه: دوس "نزّل products.js" تحت، وبعدين استبدل بيه الملف القديم اللي اسمه products.js على الاستضافة.</p>
+      </section>
+
+      <section class="panel">
+        <h3 id="formTitle">إضافة تيشرت جديد</h3>
+        <form id="productForm" novalidate>
+          <div class="fgrid">
+            <label class="f">اسم التيشرت
+              <input id="f-name" type="text" autocomplete="off" placeholder="مثلاً: تيشرت قطن أسود">
+            </label>
+            <label class="f">السعر
+              <input id="f-price" type="number" min="0" step="1" inputmode="numeric" placeholder="299">
+            </label>
+            <label class="f">السعر قبل الخصم (اختياري)
+              <input id="f-old" type="number" min="0" step="1" inputmode="numeric" placeholder="399">
+              <small>لو كتبت سعر أكبر من السعر الحالي هيظهر خصم.</small>
+            </label>
+            <label class="f">المقاسات
+              <input id="f-sizes" type="text" value="S M L XL" autocomplete="off">
+              <small>افصل بين المقاسات بمسافة.</small>
+            </label>
+            <div class="f">اللون
+              <div class="sw" id="swatches"></div>
+            </div>
+          </div>
+
+          <div class="f" style="margin-top:14px">صورة التيشرت (اختياري)
+            <div class="upl">
+              <div class="media" id="preview"></div>
+              <div>
+                <input id="f-img" type="file" accept="image/*">
+                <small>لو مفيش صورة هيظهر رسم تيشرت بلونه.</small>
+                <div style="margin-top:6px"><button type="button" class="link" data-act="clearImg">شيل الصورة</button></div>
+              </div>
+            </div>
+          </div>
+
+          <label class="chk" style="margin-top:14px"><input id="f-new" type="checkbox"> علّم عليه "جديد"</label>
+          <p class="ferr" id="formError" role="alert"></p>
+          <div class="frow">
+            <button class="btn sm" type="submit" id="formSubmit">إضافة للمتجر</button>
+            <button class="btn sm alt" type="button" id="formCancel" data-act="cancelEdit" hidden>إلغاء التعديل</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h3>التيشرتات في المتجر <span class="note" id="adminCount"></span></h3>
+        <div id="adminList"></div>
+      </section>
+
+      <section class="panel">
+        <h3>بيانات المتجر</h3>
+        <div class="fgrid">
+          <label class="f">اسم المتجر <input id="s-name" type="text"></label>
+          <label class="f">رقم واتساب لاستقبال الطلبات
+            <input id="s-wa" type="text" inputmode="tel" placeholder="01012345678">
+            <small>الطلبات هتتبعت على الرقم ده.</small>
+          </label>
+          <label class="f">العملة <input id="s-cur" type="text"></label>
+          <label class="f">لينك فيسبوك <input id="s-fb" type="text" placeholder="https://facebook.com/..."></label>
+          <label class="f">لينك انستجرام <input id="s-ig" type="text" placeholder="https://instagram.com/..."></label>
+          <label class="f">اللوجو
+            <input id="s-logo" type="file" accept="image/*">
+            <small>الأفضل صورة PNG بخلفية شفافة.</small>
+          </label>
+        </div>
+        <label class="f">الشريط العلوي <input id="s-ann" type="text"></label>
+        <label class="f">عنوان الصفحة الرئيسية <input id="s-h1" type="text"></label>
+        <label class="f">الوصف تحت العنوان <textarea id="s-sub"></textarea></label>
+      </section>
+    </div>
+
+    <div class="pubbar">
+      <span class="stat" id="adminStat">مفيش تعديلات</span>
+      <div class="frow">
+        <button class="btn sm" data-act="download">نزّل products.js</button>
+        <button class="btn sm alt" data-act="copyCode">انسخ الكود</button>
+        <button class="btn sm alt" id="btnReset" data-act="resetDraft">رجّع للأصلي</button>
+        <button class="btn sm alt" id="btnLogout" data-act="logout">تسجيل خروج</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- تسجيل دخول المالك -->
+  <div class="modal" id="login" hidden>
+    <form class="dialog login" id="loginForm" role="dialog" aria-modal="true" aria-labelledby="loginTitle" novalidate>
+      <h2 id="loginTitle">تسجيل الدخول</h2>
+      <p class="note">للمالك فقط.</p>
+      <label class="f">الإيميل <input id="l-email" type="text" inputmode="email" autocomplete="username" dir="ltr"></label>
+      <label class="f">الباسورد <input id="l-pass" type="password" autocomplete="current-password" dir="ltr"></label>
+      <p class="ferr" id="loginError" role="alert"></p>
+      <button class="btn" type="submit" id="loginBtn">دخول</button>
+      <button class="link" type="button" data-act="closeLayers">إلغاء</button>
+    </form>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <!-- بيانات المتجر (المنتجات والإعدادات) ثم الكود -->
+  <script src="products.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
